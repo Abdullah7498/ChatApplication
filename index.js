@@ -10,7 +10,6 @@ app.use(express.json());
 
 const uri = process.env.MONGO_URI;
 
-// Connect to MongoDB using Mongoose
 async function connectToMongo() {
   try {
     await mongoose.connect(uri, {
