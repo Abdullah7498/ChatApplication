@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
 
 const UserSchema = mongoose.Schema({
   name: { type: String, required: true },
@@ -11,6 +12,10 @@ const UserSchema = mongoose.Schema({
   token: {
     value: { type: String },
     expires: { type: Date },
+  },
+  chatId: {
+    type: String,
+    default: () => uuidv4(),
   },
   createdAt: { type: Date, default: Date.now },
   isVerified: { type: Boolean, default: false },

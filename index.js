@@ -4,6 +4,7 @@ const path = require("path");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const authRouter = require("./routes/authRouter");
+const chatRouter = require("./routes/chatRouter");
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -23,6 +24,7 @@ async function connectToMongo() {
 }
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1", chatRouter);
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.listen(process.env.PORT, () => {
