@@ -9,7 +9,7 @@ const generateOTP = () => {
 
 const SignUp = async (req, res) => {
   const { name, email, password } = req.body;
-  const avatar = req.file ? req.file.path : null;
+  const avatar = req.file ? `/images/${req.file.filename}` : null;
   if (!name || !email || !password) {
     return res.status(400).json({ data: { error: "All fields are required" } });
   }
